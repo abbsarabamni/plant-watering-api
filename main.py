@@ -30,7 +30,8 @@ class WaterRequest(BaseModel):
 def root():
     return {"message": "Plant watering API is running."}
 
-@app.post("/water")
+@app.api_route("/water", methods=["GET", "POST"])
+
 def water(request: WaterRequest):
     pid = request.plant_id
     if pid not in db:
